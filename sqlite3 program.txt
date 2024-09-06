@@ -1,0 +1,56 @@
+Microsoft Windows [Version 10.0.22631.4037]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\kaviy\Downloads\sqlite-tools-win-x64-3460100>sqlite3 student.db
+SQLite version 3.46.1 2024-08-13 09:16:08 (UTF-16 console I/O)
+Enter ".help" for usage hints.
+
+Create Table:
+
+sqlite> create table student_details(id inetger,name varchar(20),mark integer,result varchar(10),class varchar(20));
+
+Insert Into Values:
+
+sqlite> insert into student_details(id,name,mark,result,class)values(101,'sand',90,P,cs);
+sqlite> insert into student_details(id,name,mark,result,class)values(101,'sand',90,'P','cs');
+sqlite> insert into student_details(id,name,mark,result,class)values(102,'thaiba',80,'P','tamil');
+sqlite> insert into student_details(id,name,mark,result,class)values(103,'kaviya',60,'P','maths');
+sqlite> insert into student_details(id,name,mark,result,class)values(104,'sowmi',30,'F','social');
+sqlite> insert into student_details(id,name,mark,result,class)values(105,'dharshu',70,'P','science');
+
+Select:
+
+sqlite> select * from student_details;
+101|sand|90|P|cs
+102|thaiba|80|P|tamil
+103|kaviya|60|P|maths
+104|sowmi|30|F|social
+105|dharshu|70|P|science
+
+Read operation:
+
+sqlite> select id,name,mark,result,class from student_details where mark<90;
+102|thaiba|80|P|tamil
+103|kaviya|60|P|maths
+104|sowmi|30|F|social
+105|dharshu|70|P|science
+
+update :
+
+sqlite> update student_details set mark='50'where id=105;
+
+sqlite> select * from student_details;
+101|sand|90|P|cs
+102|thaiba|80|P|tamil
+103|kaviya|60|P|maths
+104|sowmi|30|F|social
+105|dharshu|50|P|science
+
+Delete:
+sqlite> delete from student_details where id=103;
+
+sqlite> select * from student_details;
+101|sand|90|P|cs
+102|thaiba|80|P|tamil
+104|sowmi|30|F|social
+105|dharshu|50|P|science

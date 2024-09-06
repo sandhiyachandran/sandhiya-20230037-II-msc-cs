@@ -1,0 +1,233 @@
+Microsoft Windows [Version 10.0.22631.4037]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\kaviy\Downloads\mongosh-2.3.0-win32-x64\mongosh-2.3.0-win32-x64\bin>mongosh
+Current Mongosh Log ID: 66d9cac0b89e80681a2710bb
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.0
+Using MongoDB:          7.0.14
+Using Mongosh:          2.3.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting
+   2024-09-05T20:28:41.568+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+1) Create DataBase:
+
+test> use student
+switched to db student
+
+2)Insert One:
+
+student> db.student.insertOne({id:100,name:"Sandhu"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('66d9cb4db89e80681a2710bc')
+}
+student> db.student.insertOne({id:200,name:"Dharshuu"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('66d9cb85b89e80681a2710bd')
+}
+student> db.student.insertOne({id:300,name:"Kaviya"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('66d9cba6b89e80681a2710be')
+}
+student> db.student.insertOne({id:400,name:"Dhanu"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('66d9cbb8b89e80681a2710bf')
+}
+student> db.student.insertOne({id:500,name:"Nesha"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('66d9cbd0b89e80681a2710c0')
+}
+
+3)db Collection:
+
+student> db.student.find()
+[
+  {
+    _id: ObjectId('66d9cb4db89e80681a2710bc'),id: 100,name: 'Sandhu'},
+  {
+    _id: ObjectId('66d9cb85b89e80681a2710bd'), id: 200, name: 'Dharshuu' },
+   
+  {  _id: ObjectId('66d9cba6b89e80681a2710be'), id: 300, name: 'Kaviya' },
+
+  { _id: ObjectId('66d9cbb8b89e80681a2710bf'), id: 400, name: 'Dhanu' },
+
+  { _id: ObjectId('66d9cbd0b89e80681a2710c0'), id: 500, name: 'Nesha' }
+]
+
+4)Update One:
+
+student> db.student.updateOne({id:400,name:"Dhanu"},{$set:{name:"nithi"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+student> db.student.find()
+[
+  {
+    _id: ObjectId('66d9cb4db89e80681a2710bc'), id: 100,name: 'Sandhu'},
+
+   { _id: ObjectId('66d9cb85b89e80681a2710bd'), id: 200, name: 'Dharshuu'},
+
+  {
+    _id: ObjectId('66d9cba6b89e80681a2710be'), id: 300,name: 'Kaviya' },
+
+  { _id: ObjectId('66d9cbb8b89e80681a2710bf'), id: 400, name: 'nithi' },
+
+  { _id: ObjectId('66d9cbd0b89e80681a2710c0'), id: 500, name: 'Nesha' }
+]
+5)InsertMany:
+
+student> db.student.insertMany([{id:106,name:"Meera"}])
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('66d9cd78b89e80681a2710c1') }
+}
+
+
+student> db.student.find()
+[
+  {
+    _id: ObjectId('66d9cb4db89e80681a2710bc'),id: 100,name: 'Sandhu'},
+
+  {
+    _id: ObjectId('66d9cb85b89e80681a2710bd'),id: 200,name: 'Dharshuu' },
+
+  {
+    _id: ObjectId('66d9cba6b89e80681a2710be'), id: 300,name: 'Kaviya'},
+
+  { _id: ObjectId('66d9cbb8b89e80681a2710bf'), id: 400, name: 'nithi' },
+
+  { _id: ObjectId('66d9cbd0b89e80681a2710c0'), id: 500, name: 'Nesha' },
+
+  { _id: ObjectId('66d9cd78b89e80681a2710c1'), id: 106, name: 'Meera' }
+]
+
+6)UpdateMany:
+student> db.student.updateMany({id:500,name:"Nesha"},{$set:{name:"Riya"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+student> db.student.find()
+[
+  {
+    _id: ObjectId('66d9cb4db89e80681a2710bc'),id: 100, name: 'Sandhu'},
+  {
+    _id: ObjectId('66d9cb85b89e80681a2710bd'),id: 200,name: 'Dharshuu' },
+
+  {
+    _id: ObjectId('66d9cba6b89e80681a2710be'),id: 300,name: 'Kaviya' },
+
+  { _id: ObjectId('66d9cbb8b89e80681a2710bf'), id: 400, name: 'nithi' },
+
+  { _id: ObjectId('66d9cbd0b89e80681a2710c0'), id: 500, name: 'Riya' },
+
+  { _id: ObjectId('66d9cd78b89e80681a2710c1'), id: 106, name: 'Meera' }
+]
+
+7)DeleteOne:
+student> db.student.deleteOne({id:400,name:"nithi"})
+
+{ acknowledged: true, deletedCount: 1 }
+
+student> db.student.find()
+[
+  {
+    _id: ObjectId('66d9cb4db89e80681a2710bc'),id: 100,name: 'Sandhu' },
+
+  {
+    _id: ObjectId('66d9cb85b89e80681a2710bd'), id: 200,name: 'Dharshuu'},
+
+  {
+    _id: ObjectId('66d9cba6b89e80681a2710be'),id: 300, name: 'Kaviya'},
+
+  { _id: ObjectId('66d9cbd0b89e80681a2710c0'), id: 500, name: 'Riya' },
+
+  { _id: ObjectId('66d9cd78b89e80681a2710c1'), id: 106, name: 'Meera' }
+]
+
+8)DeleteMany:
+
+student> db.student.deleteMany({id:106,name:"Meera"})
+
+{ acknowledged: true, deletedCount: 1 }
+
+student> db.student.find()
+[
+  {
+    _id: ObjectId('66d9cb4db89e80681a2710bc'),id: 100,name: 'Sandhu'},
+
+  {
+    _id: ObjectId('66d9cb85b89e80681a2710bd'),id: 200,name: 'Dharshuu' },
+
+  {
+    _id: ObjectId('66d9cba6b89e80681a2710be'), id: 300,name: 'Kaviya' },
+
+  { _id: ObjectId('66d9cbd0b89e80681a2710c0'), id: 500, name: 'Riya' }
+]
+
+9)Limit:
+
+student> db.student.find().sort({name:1}).limit(3)
+[
+  {
+     _id: ObjectId('66d9cb85b89e80681a2710bd'), id: 200 name: 'Dharshuu'},
+
+  {
+    _id: ObjectId('66d9cba6b89e80681a2710be'),id: 300,name: 'Kaviya' },
+
+  { _id: ObjectId('66d9cbd0b89e80681a2710c0'), id: 500, name: 'Riya' }
+]
+
+10)Skip:
+
+student> db.student.find().skip(2)
+[
+  {
+    _id: ObjectId('66d9cba6b89e80681a2710be'), id: 300, name: 'Kaviya' },
+
+  { 
+    _id: ObjectId('66d9cbd0b89e80681a2710c0'), id: 500, name: 'Riya' }
+]
+
+11)GreaterThan:
+
+student> db.student.findOne({id:{$gt:300}})
+{ _id: ObjectId('66d9cbd0b89e80681a2710c0'), id: 500, name: 'Riya' }
+
+12)Lessthan
+student> db.student.findOne({id:{$lt:200}})
+{ _id: ObjectId('66d9cb4db89e80681a2710bc'), id: 100, name: 'Sandhu' }
+
+13)GreaterThan or Equal
+
+student> db.student.findOne({id:{$gte:200}})
+{
+  _id: ObjectId('66d9cb85b89e80681a2710bd'), id: 200,name: 'Dharshuu'}
+
+14)LessThan or equal
+
+student> db.student.findOne({id:{$lte:100}})
+{ _id: ObjectId('66d9cb4db89e80681a2710bc'), id: 100, name: 'Sandhu' }
+
+student> db.student.findOne({id:{$lte:200}})
+{ _id: ObjectId('66d9cb4db89e80681a2710bc'), id: 100, name: 'Sandhu' }
